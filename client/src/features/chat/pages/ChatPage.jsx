@@ -1,49 +1,15 @@
-import { useEffect } from 'react';
-import { useChatStore } from '../stores/chatStore';
 import SocketStatus from '../../../shared/components/SocketStatus';
 import { useParams } from 'react-router';
-import { useSocketStore } from '@/shared/stores/socketStore';
 import Pagination from '@/features/broadcast/components/Pagination';
 import ChatRoomSidebar from '../components/ChatRoomSidebar';
 import ChatMessageWitInput from '../components/ChatMessageWithInput';
 
 export default function ChatPage() {
-  const {
-    messages,
-    sendMessage,
-    listenChatEvents,
-    removeChatEvents,
-    joinChat,
-    leaveChat,
-    isListening,
-  } = useChatStore();
-  const { isConnected } = useSocketStore();
-
   const params = useParams();
-  console.log('messages', messages);
-
-  useEffect(() => {
-    listenChatEvents();
-    return () => removeChatEvents();
-    // eslint-disable-next-line
-  }, [isConnected]);
-
-  useEffect(() => {
-    if (params.roomId && isListening) {
-      joinChat(params.roomId);
-    }
-
-    return () => {
-      if (params.roomId && isListening) {
-        leaveChat(params.roomId);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.roomId, isListening]);
+  console.log('params', params);
 
   const handleSend = (input) => {
-    console.log('Sending message:', input);
-    sendMessage({ message: input, roomName: params.roomId });
+    console.log('sending message:', input);
   };
 
   return (
@@ -66,10 +32,7 @@ export default function ChatPage() {
 
           {/* Chat Messages - Right */}
           <div className="flex-1">
-            <ChatMessageWitInput
-              messages={messages}
-              onSendMessage={handleSend}
-            />
+            <ChatMessageWitInput messages={[]} onSendMessage={handleSend} />
           </div>
         </div>
       </div>
