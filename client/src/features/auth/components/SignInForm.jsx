@@ -4,8 +4,9 @@ import { Link, useNavigate, useLocation } from 'react-router';
 import { signInSchema } from '../schemas/authSchemas';
 import { PUBLIC_ROUTES } from '../../../shared/constants/router';
 import { Button, Form, InputForm } from '../../../shared/components/ui';
-import { socketService } from '../../../shared/services';
+
 import useAuthStore from '../stores/authStore';
+import { useSocketStore } from '@/shared/stores/socketStore';
 
 export default function SignInForm() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function SignInForm() {
 
       if (result.success) {
         // Connect to Socket.IO
-        socketService.connect();
+        useSocketStore.getState().connect();
 
         // Redirect to the page user was trying to access or home
         const from = location.state?.from?.pathname || '/';

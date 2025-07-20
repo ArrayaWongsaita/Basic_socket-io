@@ -4,8 +4,9 @@ import { Link, useNavigate } from 'react-router';
 import { signUpSchema } from '../schemas/authSchemas';
 import { PUBLIC_ROUTES } from '../../../shared/constants/router';
 import { Button, Form, InputForm } from '../../../shared/components/ui';
-import { socketService } from '../../../shared/services';
+
 import useAuthStore from '../stores/authStore';
+import { useSocketStore } from '@/shared/stores/socketStore';
 
 export default function SignUpForm() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function SignUpForm() {
 
     if (result.success) {
       // Connect to Socket.IO
-      socketService.connect();
+      useSocketStore.getState().connect();
 
       // Navigate to home page
       navigate('/');

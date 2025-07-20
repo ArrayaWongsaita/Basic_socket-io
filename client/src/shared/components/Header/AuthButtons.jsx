@@ -7,6 +7,7 @@ import UserDropdownMenu from './UserDropdownMenu';
 export default function AuthButtons() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isLoading = useAuthStore((state) => state.isLoading);
+  const signIn = useAuthStore((state) => state.signIn);
 
   // Show loading state
   if (isLoading) {
@@ -27,15 +28,23 @@ export default function AuthButtons() {
     );
   }
 
+  function handleSignin() {
+    signIn({
+      email: 'random@example.com',
+      password: 'password123',
+    });
+  }
+
   // If not authenticated, show login/signup buttons
   return (
     <div className="hidden md:flex items-center space-x-3">
-      <Button variant="outline" size="sm" asChild>
-        <Link to={PUBLIC_ROUTES.LOGIN}>Login</Link>
+      <Button variant="outline" size="sm" asChild onClick={handleSignin}>
+        {/* <Link to={PUBLIC_ROUTES.SIGNIN}>Login</Link> */}
+        <p>Login</p>
       </Button>
-      <Button variant="default" size="sm" asChild>
-        <Link to={PUBLIC_ROUTES.REGISTER}>Sign Up</Link>
-      </Button>
+      {/* <Button variant="default" size="sm" asChild>
+        <Link to={PUBLIC_ROUTES.SIGNUP}>Sign Up</Link>
+      </Button> */}
     </div>
   );
 }

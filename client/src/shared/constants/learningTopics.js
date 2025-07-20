@@ -9,7 +9,7 @@ export const learningTopics = [
       'Typing indicators',
       'Message history',
     ],
-    link: '/chat',
+    link: '/chat/all',
   },
   {
     title: 'Broadcasting Patterns',

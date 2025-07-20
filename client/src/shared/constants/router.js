@@ -7,6 +7,7 @@ export const PRIVATE_ROUTES = {
 export const PUBLIC_ROUTES = {
   HOME: '/',
   ABOUT: '/about',
-  LOGIN: '/login',
-  REGISTER: '/register',
+  SIGNIN: '/signin',
+  SIGNUP: '/signup',
+  LEARN: '/learn',
 };

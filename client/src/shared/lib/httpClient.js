@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_CONFIG, STORAGE_KEYS } from '../config/api';
+import { useAuthStore } from '@/features/auth';
 
 // Create axios instance
 const httpClient = axios.create({
@@ -13,7 +14,7 @@ const httpClient = axios.create({
 // Request interceptor to add auth token
 httpClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
+    const token = useAuthStore.getState().token;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -33,8 +34,7 @@ httpClient.interceptors.response.use(
     // Handle common errors
     if (error.response?.status === 401) {
       // Token expired or invalid
-      localStorage.removeItem(STORAGE_KEYS.TOKEN);
-      localStorage.removeItem(STORAGE_KEYS.USER);
+      useAuthStore.getState().signOut();
 
       // Redirect to login if not already there
       if (!window.location.pathname.includes('/signin')) {

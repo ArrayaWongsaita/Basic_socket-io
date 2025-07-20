@@ -1,1 +1,1 @@
-export { default as ChatDashboard } from './ChatDashboard';
+export { default as ChatPage } from './ChatPage';

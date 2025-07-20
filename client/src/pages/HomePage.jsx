@@ -133,7 +133,7 @@ export default function HomePage() {
             💬 Start Chatting
           </Link>
           <Link
-            to="/broadcast"
+            to="/broadcast/all"
             className="inline-block px-8 py-4 bg-purple-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-purple-700"
           >
             📢 Try Broadcasting

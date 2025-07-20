@@ -193,7 +193,7 @@ export default function AboutPage() {
             💬 Start with Chat
           </Link>
           <Link
-            to="/broadcast"
+            to="/broadcast/all"
             className="px-8 py-4 bg-purple-600 text-white rounded-xl font-semibold text-lg hover:bg-purple-700 transition-colors duration-200 shadow-lg border-2 border-purple-400"
           >
             � Try Broadcasting

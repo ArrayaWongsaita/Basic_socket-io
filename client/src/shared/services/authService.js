@@ -17,7 +17,7 @@ class AuthService {
   // Sign in
   async signIn(credentials) {
     const response = await api.post(API_CONFIG.ENDPOINTS.SIGNIN, credentials);
-
+    console.log('Signed in with credentials:', response);
     if (response.success) {
       const { user, token } = response.data;
       this.setAuthData(user, token);
@@ -28,9 +28,9 @@ class AuthService {
 
   // Sign out
   async signOut() {
-    const response = await api.post(API_CONFIG.ENDPOINTS.SIGNOUT);
+    // const response = await api.post(API_CONFIG.ENDPOINTS.SIGNOUT);
     this.clearAuthData();
-    return response;
+    // return response;
   }
 
   // Verify token

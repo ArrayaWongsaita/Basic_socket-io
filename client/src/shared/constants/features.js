@@ -10,7 +10,7 @@ export const features = [
     description:
       'Connect with others instantly through our advanced chat system with rooms, typing indicators, and message history.',
     icon: ChatBubbleLeftRightIcon,
-    link: '/chat',
+    link: '/chat/all',
     color: 'bg-blue-500',
     hoverColor: 'hover:bg-blue-600',
   },

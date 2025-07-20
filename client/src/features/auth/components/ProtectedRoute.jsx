@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from 'react-router';
 import useAuthStore from '../stores/authStore';
+import { PUBLIC_ROUTES } from '@/shared/constants';
 
 export default function ProtectedRoute({ children }) {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -20,7 +21,9 @@ export default function ProtectedRoute({ children }) {
 
   // Redirect to login if not authenticated
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return (
+      <Navigate to={PUBLIC_ROUTES.SIGNIN} state={{ from: location }} replace />
+    );
   }
 
   return children;

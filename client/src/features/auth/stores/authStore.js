@@ -1,6 +1,6 @@
+import authService from '@/shared/services/authService';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { authService } from '../../../shared/services';
 
 const useAuthStore = create(
   persist(
@@ -31,7 +31,7 @@ const useAuthStore = create(
           const response = await authService.signIn(credentials);
 
           if (response.success) {
-            const { user, token } = response.data;
+            const { user, token } = response.data.data;
 
             set({
               user,
@@ -128,7 +128,7 @@ const useAuthStore = create(
           const response = await authService.verifyToken();
 
           if (response.success) {
-            const user = response.data.user;
+            const user = response.data.data.user;
             set({
               user,
               isAuthenticated: true,
