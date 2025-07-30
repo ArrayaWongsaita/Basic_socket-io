@@ -41,7 +41,7 @@ export default function AppRouter() {
 
           {/* Chat Routes */}
           <Route
-            path={PRIVATE_ROUTES.CHAT + '/:roomId'}
+            path={PRIVATE_ROUTES.CHAT + '/:channel/:roomId'}
             element={<ChatPage />}
           />
         </Route>

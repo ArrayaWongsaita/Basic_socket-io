@@ -3,27 +3,22 @@ import { useNavigate } from 'react-router';
 import { useParams } from 'react-router';
 
 const roomList = [
-  { id: 'all', name: 'All Rooms', description: 'View all messages' },
-  { id: 'General', name: 'General', description: 'General discussion' },
-  { id: 'Tech_Talk', name: 'Tech Talk', description: 'Technology discussions' },
-  { id: 'Random', name: 'Random', description: 'Random conversations' },
-  { id: 'Help', name: 'Help', description: 'Ask for help' },
-  {
-    id: 'Announcements',
-    name: 'Announcements',
-    description: 'Important updates',
-  },
+  { id: '1', name: 'All Rooms', description: 'View all messages' },
+  { id: '2', name: 'General', description: 'General discussion' },
+  { id: '3', name: 'Tech Talk', description: 'Technology discussions' },
 ];
 
 export default function ChatRoomSidebar({ className = '' }) {
   const params = useParams();
   const navigate = useNavigate();
 
-  const handleRoomChange = (roomId) => {
-    navigate(`${PRIVATE_ROUTES.CHAT}/${roomId}`);
+  const handleRoomChange = (channelId) => {
+    navigate(`${PRIVATE_ROUTES.CHAT}/${channelId}/${params.roomId}`);
   };
 
-  const currentRoom = params.roomId || 'all';
+  const currentRoom = params.channel || 'all';
+  console.log('params', params);
+  console.log('Current Room:', currentRoom);
 
   return (
     <div className={` bg-white border-r border-gray-200 ${className}`}>

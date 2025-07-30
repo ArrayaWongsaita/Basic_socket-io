@@ -6,6 +6,7 @@ import { useSocketStore } from '@/shared/stores/socketStore';
 import Pagination from '@/features/broadcast/components/Pagination';
 import ChatRoomSidebar from '../components/ChatRoomSidebar';
 import ChatMessageWitInput from '../components/ChatMessageWithInput';
+import ChatRoomSidebarParam from '../components/ChatRoomSidebarParam';
 
 export default function ChatPage() {
   const {
@@ -60,8 +61,13 @@ export default function ChatPage() {
         {/* Main Chat Container */}
         <div className="flex gap-0.5  ">
           {/* Sidebar - Left */}
-          <div className="w-80 flex-shrink-0">
-            <ChatRoomSidebar className="h-[500px] overflow-scroll rounded-2xl shadow-xl" />
+          <div className="flex">
+            <div className="w-80 flex-shrink-0">
+              <ChatRoomSidebar className="h-[500px] overflow-scroll rounded-2xl shadow-xl" />
+            </div>
+            <div className="w-80 flex-shrink-0">
+              <ChatRoomSidebarParam className="h-[500px] overflow-scroll rounded-2xl shadow-xl" />
+            </div>
           </div>
 
           {/* Chat Messages - Right */}
